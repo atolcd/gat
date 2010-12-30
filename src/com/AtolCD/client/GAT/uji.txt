@@ -1,0 +1,15 @@
+CREATE DATABASE osbi_test TEMPLATE=template_postgis;
+
+shp2pgsql.exe 
+SELECT AddGeometryColumn( 'referentiel', 'geocanton', 'geom', 4326, 'MULTIPOLYGON', 2 ); 
+update geocomm a set canton = (SELECT canton from dim_geo b where b.code_insee = a.code_insee);
+
+update geocomm a set arrdt = (SELECT arrondt from dim_geo b where b.code_insee = a.code_insee);
+
+UPDATE geocanton a SET geom=(SELECT multi(ST_Union(b.geom)) FROM public.geocomm b where 
+b.canton=a.nom);
+
+SELECT AddGeometryColumn( 'public', 'geoarrdt', 'geom', 4326, 'MULTIPOLYGON', 2 ); 
+
+UPDATE geoarrdt a SET geom=(SELECT multi(ST_Union(b.geom)) FROM public.geocomm b where 
+b.arrdt=a.nom);
