@@ -31,7 +31,7 @@ public class Legendizer{
 	private OlapConfig olcf;
 	
 	/* 	* * Methodes de calcul
-		0 - Lineaire
+		0 - Linear
 		1 - Quadratique
 		2 - Logarithmique
 	*/
@@ -141,7 +141,6 @@ public class Legendizer{
 			intervalRgb[2] = (int)(Math.floor(minRgb[2]*(1.0-pos) + maxRgb[2] * pos));
 			
 			gradient[i] = RGBtoHTML(intervalRgb);
-			System.out.println("---grad : "+i+" : "+gradient[i]);
 		}
 
 		return gradient;
@@ -191,52 +190,7 @@ public class Legendizer{
 	
 	private int getIntervalIdx(double value) {
 		double theValue = value;
-/*
-		// value should be >= this.min and < this.max
-		if (value < this.min) {
-			theValue = this.min;
-		}
-		else if (value >= this.max) {
-			theValue = this.max;
-		}
 
-		double range = this.max - this.min;
-		double step = range / (this.numberOfIntervals-1);
-		int idx = (int)(Math.ceil((theValue - this.min) / step));
-*/
-
-/*
-_getIntervalIdx: function (value) {
-		var theValue = value;
-		
-		if(this.linear==1){
-			// value should be >= minValue and < maxValue
-			if (value < this.minValue) {
-				theValue = this.minValue;
-			}
-			else if (value >= this.maxValue) {
-				theValue = this.maxValue;
-			}
-			
-			var range = this.maxValue - this.minValue;
-			var step = range / this.numberOfIntervals;
-			
-			var idx = Math.floor((theValue - this.minValue) / step);
-			
-			return idx;
-		}
-		else{
-			for (var i = 0 ; i < this.valueGrad.length ; i++) {
-				
-				if(theValue<this.valueGrad[i]){
-					return (i-1);
-				}
-			}		
-			return (this.valueGrad.length-1);
-		}
-	},
-
-*/
 		for (int h = 0 ; h < this.vales.length ; h++) {
 				
 				if(theValue<this.vales[h]){

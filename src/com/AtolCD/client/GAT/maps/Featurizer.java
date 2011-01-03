@@ -108,7 +108,6 @@ public class Featurizer{
 			
 			System.out.println("Designing shape #"+l);
 
-			
 			jsonFeatures.append("{\"type\":\"Feature\",\"id\":\"OpenLayers.Feature.Vector_287\",\"properties\":{");
 			jsonFeatures.append("\"docol\":\"");
 			jsonFeatures.append(okr);
